@@ -1,0 +1,187 @@
+Python is a object-oriented programming language. Any object-oriented programming language’s key concepts include classes, objects, data hiding, encapsulation, abstraction, polymorphism, and inheritance.
+
+Classes ----
+
+A class is a logical way to group fields that hold values (data) and associated methods that operate on those fields into a single unit. The class provides the structure or blueprint for creating objects. It describes how an object looks and operates. It helps us to create a user-defined data type.
+All classes must be defined by a class definition, which consists of two parts: class header and class body.
+The class header declares the class names along with other information about the class such as the name of its superclass, whether it implements any interfaces, access specifier that determines the visibility. These modifiers declare whether the class is abstract or final. The class body is enclosed within braces and consists of fields, methods, constructors, and other declarations. At its most superficial level, the class takes the following form.
+
+example --  
+class Bird:
+	color = "red"//attribute
+s = Bird() // object created from class
+print(s.__class__.color)//__class__ allows to use class attributes
+
+
+Class variable---
+
+If a field is declared static, then there is one field for the entire class instead of one per object. A class’s static field is often referred to as a class variable because the static field is associated with a class and not with individual instances of the class. A static field gets memory only once for the whole class, no matter how many class objects are created.
+
+
+Methods---
+
+Methods are truly the heart and soul of the programs. A method is a self-contained block of code that performs a specific task. They provide a way of defining an object’s behavior(s), i.e., what the object does. Methods serve to break up large and complex calculations that might involve many code lines.
+
+
+Object---
+
+Consider an example of an architect of a house who specifies a house design, i.e., how it will look like, but doesn’t build any house. On the basis of this design, a builder can build one or more houses. Similarly, a class specifies the format for creating objects. The mere definition of a class doesn’t create any object. It only describes how the objects will look like when they are created. So a class definition is just a template or a blueprint based on which one or more objects, which are real-world entities, can be created.
+
+example--
+
+class house: 
+    def __init__(self,rooms, area): 
+       self.rooms = rooms 
+       self.area = area 
+    def display(self): 
+       print(self.rooms,self.area) 
+h1 = house("5", 2000) 
+h1.display()
+
+
+Polymorphism---
+
+Polymorphism implies the ability to take many forms.Polymorphism can be defined as one interface multiple methods, which means that one interface can perform different but related activities.It enables a single method call to behave differently depending on the type of object the call applies.
+
+example---
+
+class Parrot:
+
+    def fly(self):
+        print("Parrot can fly")
+    
+    def swim(self):
+        print("Parrot can't swim")
+
+class Penguin:
+
+    def fly(self):
+        print("Penguin can't fly")
+    
+    def swim(self):
+        print("Penguin can swim")
+
+# common interface
+def flying_test(bird):
+    bird.fly()
+
+#instantiate objects
+blu = Parrot()
+peggy = Penguin()
+
+# passing the object
+flying_test(blu)
+flying_test(peggy)
+
+output--
+Parrot can fly
+Penguin can't fly
+
+In the above program, we defined two classes Parrot and Penguin. Each of them have a common fly() method. However, their functions are different.
+
+To use polymorphism, we created a common interface i.e flying_test() function that takes any object and calls the object's fly() method. Thus, when we passed the blu and peggy objects in the flying_test() function, it ran effectively.
+
+
+
+Inheritance----
+
+Inheritance is one of the key concepts in the Python Object-Oriented Programming. We can write a new class that can inherit the accessible fields and methods of the existing class and may also add new fields and methods. The inclusion of members of the existing class in a new class so that they are accessible in the new class is known as class inheritance. The existing class that is being inherited is called the superclass, and the new class that inherits the functionality is called the subclass.
+
+
+example----
+# parent class
+class Bird:
+    
+    def __init__(self):
+        print("Bird is ready")
+
+    def whoisThis(self):
+        print("Bird")
+
+    def swim(self):
+        print("Swim faster")
+
+# child class
+class Penguin(Bird)://inherited from bird class
+
+    def __init__(self):
+        # call super() function
+        super().__init__()
+        print("Penguin is ready")
+
+    def whoisThis(self):
+        print("Penguin")
+
+    def run(self):
+        print("Run faster")
+
+peggy = Penguin()
+peggy.whoisThis()
+peggy.swim()
+peggy.run()
+
+output---
+Bird is ready
+Penguin is ready
+Penguin
+Swim faster
+Run faster
+
+explanation-------
+
+In the above program, we created two classes i.e. Bird (parent class) and Penguin (child class). The child class inherits the functions of parent class. We can see this from the swim() method.
+
+Again, the child class modified the behavior of the parent class. We can see this from the whoisThis() method. Furthermore, we extend the functions of the parent class, by creating a new run() method.
+
+Additionally, we use the super() function inside the __init__() method. This allows us to run the __init__() method of the parent class inside the child class.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
