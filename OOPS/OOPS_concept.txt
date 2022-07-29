@@ -18,7 +18,7 @@ Class variable---
 If a field is declared static, then there is one field for the entire class instead of one per object. A class’s static field is often referred to as a class variable because the static field is associated with a class and not with individual instances of the class. A static field gets memory only once for the whole class, no matter how many class objects are created.
 
 
-Methods---
+1. Methods---
 
 Methods are truly the heart and soul of the programs. A method is a self-contained block of code that performs a specific task. They provide a way of defining an object’s behavior(s), i.e., what the object does. Methods serve to break up large and complex calculations that might involve many code lines.
 
@@ -39,7 +39,7 @@ h1 = house("5", 2000)
 h1.display()
 
 
-Polymorphism---
+2. Polymorphism---
 
 Polymorphism implies the ability to take many forms.Polymorphism can be defined as one interface multiple methods, which means that one interface can perform different but related activities.It enables a single method call to behave differently depending on the type of object the call applies.
 
@@ -83,7 +83,7 @@ To use polymorphism, we created a common interface i.e flying_test() function th
 
 
 
-Inheritance----
+3. Inheritance----
 
 Inheritance is one of the key concepts in the Python Object-Oriented Programming. We can write a new class that can inherit the accessible fields and methods of the existing class and may also add new fields and methods. The inclusion of members of the existing class in a new class so that they are accessible in the new class is known as class inheritance. The existing class that is being inherited is called the superclass, and the new class that inherits the functionality is called the subclass.
 
@@ -135,6 +135,187 @@ Again, the child class modified the behavior of the parent class. We can see thi
 
 Additionally, we use the super() function inside the __init__() method. This allows us to run the __init__() method of the parent class inside the child class.
 
+
+4. Function Ovrloading ----
+
+Function Overloading happens when a value which is already exists with another data or as a definition in the program and this value is assigned with another value. then the new data overloads the previous data or definition . this called function overloading.
+
+
+5. Data Hiding------
+
+The characteristics of an object may or may not be visible outside of the class definition. It will benefit if you named attributes with a double underscore prefix, and those attributes are not accessible to outsiders.
+
+
+class Total:
+   __Sum = 0
+   def count(self):
+     self.__Sum += 1
+     print self.__Sum
+counter = Total()
+counter.count()
+counter.count()
+print counter.__Sum
+
+
+6. Operator overloading------
+
+Operator overloading is the method of utilizing an operator according to the operand in various forms. You may adjust the way a Python operator operates on numerous data types.
+
+
+class Bubble:
+   def __init__(self, Volume, Area):
+     self.Volume = Volume
+     self.Area = Area
+   def __str__(self):
+     return 'Bubble (%d, %d)' % (self.Volume, self.Area)
+   def __add__(self,other):
+     return Bubble(self.Volume + other.Volume, self.Area + other.Area)
+b1 = Bubble(2,10)
+b2 = Bubble(5,-2)
+print (b1 + b2)
+
+
+7. Overriding Methods--
+
+A subclass inherits methods from a superclass. However, in certain situations, the subclass needs to modify the implementation (code) of a method defined in the superclass without changing the parameter list. It is achieved by overriding or redefining the method in the subclass.
+
+def m():
+    return 1
+def m():
+    return 2
+print(m())
+output = 2
+
+
+Encapsulation In Python-----
+
+Encapsulation offers a way for us to access the required variables without providing the program full-fledged access to any of those variables. Python provides access to all the variables and methods globally.   
+
+Check the below demonstration of how variables can easily be accessed.
+
+class Person:
+    def __init__(self, name, age=0):
+        self.name = name
+        self.age = age
+ 
+    def display(self):
+        print(self.name)
+        print(self.age)
+ 
+person = Person('Dev', 30)
+#accessing using class method
+person.display()
+#accessing directly from outside
+print(person.name)
+print(person.age)
+
+Output
+
+Dev
+30
+Dev
+30
+
+Methods to Control Access----
+There are multiple methods that are offered by Python to limit variable and method access across the program. Let’s go over the methods in detail.
+
+Using Single Underscore---
+
+A common Python programming convention to identify a private variable is by prefixing it with an underscore. Now, this doesn’t really make any difference on the compiler side of things. The variable is still accessible as usual. But being a convention that programmers have picked up on, it tells other programmers that the variables or methods have to be used only within the scope of the class.
+
+See the below example:
+
+class Person:
+    def __init__(self, name, age=0):
+        self.name = name
+        self._age = age
+ 
+    def display(self):
+        print(self.name)
+        print(self._age)
+ 
+person = Person('Dev', 30)
+#accessing using class method
+person.display()
+#accessing directly from outside
+print(person.name)
+print(person._age)
+Output
+
+Dev
+30
+Dev
+30
+
+Using Double Underscores------
+
+If you want to make class members i.e. methods and variables private, then you should prefix them with double underscores.
+In the below example, in Class person, the age variable is changed and it’s prefixed by leading double underscores.
+
+class Person:
+    def __init__(self, name, age=0):
+        self.name = name
+        self.__age = age
+ 
+    def display(self):
+        print(self.name)
+        print(self.__age)
+ 
+person = Person('Dev', 30)
+#accessing using class method
+person.display()
+#accessing directly from outside
+print('Trying to access variables from outside the class ')
+print(person.name)
+print(person.__age)
+Output
+
+Dev
+30
+Trying to access variables from outside the class
+Dev
+Traceback (most recent call last):
+  File "Person.py", line 16, in <module>
+    print(person.__age)
+AttributeError: 'Person' object has no attribute '__age'
+
+
+Using Getter and Setter methods to access private variables---
+
+If you want to access and change the private variables, accessor (getter) methods and mutators(setter methods) should be used, as they are part of Class.
+
+class Person:
+    def __init__(self, name, age=0):
+        self.name = name
+        self.__age = age
+ 
+    def display(self):
+        print(self.name)
+        print(self.__age)
+ 
+    def getAge(self):
+        print(self.__age)
+ 
+    def setAge(self, age):
+        self.__age = age
+ 
+person = Person('Dev', 30)
+#accessing using class method
+person.display()
+#changing age using setter
+person.setAge(35)
+person.getAge()
+Output
+
+Dev
+30
+35
+
+Advantages----
+
+1. Encapsulation helps in achieving the well-defined interaction in every application.
+2. The applications can be securely maintained.
+3. It ensures the flexibility of the code through a proper code organization.
 
 
 
