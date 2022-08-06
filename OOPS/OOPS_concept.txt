@@ -138,8 +138,41 @@ Additionally, we use the super() function inside the __init__() method. This all
 
 4. Function Ovrloading ----
 
-Function Overloading happens when a value which is already exists with another data or as a definition in the program and this value is assigned with another value. then the new data overloads the previous data or definition . this called function overloading.
+In Python, a function can be created and called several times by passing many arguments or parameters in it. This process of calling the same function, again and again, using different arguments or parameters is called Function Overloading.
 
+two types of function overloading---
+
+1. built-in functions and
+2. custom or user-defined functions
+
+
+1. built-in functions and----
+
+Overloading built-in functions require determining any pre-defined Python function with additional functionalities and parameters.
+
+example---
+
+def __init__(self, collection, seller):
+    self.collection = list(collection)
+    self.seller = seller
+def __len__(self):
+    return len(self.collection)
+emp1 = Employee(['Insurance', 'Stock-Market', 'Loan', 'Stock-Market'], 'Karlos Ray')
+print("The employee", emp1.seller, "has collected", len(emp1), "different things")
+
+2. Custom Function Overloading
+
+Overloading any predefined custom function with additioal functionalities and parameters.
+
+example-----
+
+def addi(x, y):
+    print(x + y)
+
+def addi(x, y, z):
+    print(x + y + z)
+
+print(addi(10, 20, 30)) 
 
 5. Data Hiding------
 
@@ -159,21 +192,28 @@ print counter.__Sum
 
 6. Operator overloading------
 
-Operator overloading is the method of utilizing an operator according to the operand in various forms. You may adjust the way a Python operator operates on numerous data types.
+Modifying the behavior of an operator by redefining the method an operator invokes is called Operator Overloading. It allows operators to have extended behavior beyond their pre-defined behavior.
 
 
-class Bubble:
-   def __init__(self, Volume, Area):
-     self.Volume = Volume
-     self.Area = Area
-   def __str__(self):
-     return 'Bubble (%d, %d)' % (self.Volume, self.Area)
-   def __add__(self,other):
-     return Bubble(self.Volume + other.Volume, self.Area + other.Area)
-b1 = Bubble(2,10)
-b2 = Bubble(5,-2)
-print (b1 + b2)
+Example of Operators in Python
 
+num1 = 3
+num2 = 4
+addition = num1 + num2
+print(addition)
+Output----7
+In the above code example, + is the operator that performs the addition operation on operands num1 and num2.
+
+num1 = 20
+num2 = 5
+print(type(num1))
+print(type(num2))
+sum = num1 + num2
+print(sum)
+Output-----<class ‘int’>
+            <class ‘int’>
+            25
+In the above code example, operands are two int objects and the plus operator returns their sum.
 
 7. Overriding Methods--
 
@@ -187,7 +227,7 @@ print(m())
 output = 2
 
 
-Encapsulation In Python-----
+8. Encapsulation In Python-----
 
 Encapsulation offers a way for us to access the required variables without providing the program full-fledged access to any of those variables. Python provides access to all the variables and methods globally.   
 
@@ -216,8 +256,9 @@ Dev
 Dev
 30
 
-Methods to Control Access----
-There are multiple methods that are offered by Python to limit variable and method access across the program. Let’s go over the methods in detail.
+Methods to Control Access----[Data Hiding------reedited]
+
+The characteristics of an object may or may not be visible outside of the class definition. It will benefit if you named attributes with a double underscore prefix, and those attributes are not accessible to outsiders.
 
 Using Single Underscore---
 
@@ -320,6 +361,13 @@ Advantages----
 
 
 
+Difference between Method Overloading and Method Overriding in Python: -------
+  
+ 
+1.  In the method overloading, methods or functions must have the same name and different signatures.   Whereas in the method   overriding, methods or functions must have the same name and same signatures.
+2.  Method overloading is a example of compile time polymorphism.   Whereas method overriding is a example of run time polymorphism.
+3.  In the method overloading, inheritance may or may not be required.  Whereas in method overriding, inheritance always required.
+4.  Method overloading is performed between methods within the class.   Whereas method overriding is done between parent class and child class methods.
 
 
 
