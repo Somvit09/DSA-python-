@@ -1,6 +1,6 @@
 class Node:
 
-    def __inti__(self, data):
+    def __init__(self, data):
         self.data = data
         self.next = None
 
@@ -20,25 +20,30 @@ class CircularLinkedList:
         while n:
             print(n.data, end="<-->")
             n = n.next
-            if n.next == self.head:
+            if n is self.head:
+                print(n.data)
                 break
         return
     
     # Insert
 
     # Insert into an empty list
-    def InsertIntoAnEmptyLL(self, new_node):
+    def InsertIntoAnEmptyLL(self, data):
+        new_node = Node(data)
         # if head is none then head is the new node and its next pointer is pointed to the head node 
         if self.head is None:
-            new_node.next = self.head
             self.head = new_node
+            new_node.next = self.head
             return
 
 
     # Inserting elements at begining
     def InsertANodeAtBegin(self, data):
         new_node = Node(data)
-        self.InsertIntoAnEmptyLL(new_node)
+        if self.head is None:
+            self.head = new_node
+            new_node.next = self.head
+            return 
         n = self.head
         # traversing the list until the head to be found
         while n.next is not self.head:
@@ -151,6 +156,13 @@ class CircularLinkedList:
                 return
             print("node is not present")
             return 
+        if self.head.next is not None and self.head.data == x:
+            n = self.head
+            while n.next is not self.head:
+                n = n.next
+            n.next = self.head.next
+            self.head = n.next
+            return
         n = self.head
         prev = None
         # traversing the linked list until the last node
@@ -170,7 +182,24 @@ class CircularLinkedList:
         prev.next = n.next
         return
         
-        
+sol = CircularLinkedList()
+sol.InsertIntoAnEmptyLL(5)
+sol.InsertANodeAtBegin(4)
+sol.InsertANodeAtBegin(3)
+sol.InsertNodeAtEnd(6)
+sol.InsertNodeAtEnd(7)
+sol.InsertNodeAtEnd(8)
+sol.InsertANodeAtBegin(2)
+sol.InsertNodeAfterAGivenNode(9, 8)
+sol.InsertNodeAfterAGivenNode(10, 4)
+sol.InsertANodeBeforeANode(11, 10)
+sol.DeleteNodeBeginPosition()
+sol.DeleteNodeFromEnd()
+sol.DeleteNodeByValue(11)
+sol.DeleteNodeByValue(10)
+sol.DeleteNodeByValue(3)
+sol.DeleteNodeByValue(4)
+sol.PrintCircularList()
         
 
 
