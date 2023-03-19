@@ -102,6 +102,76 @@ class CircularLinkedList:
         new_node.next = n
         prev.next = new_node
         return
+    
+    # Delete
+
+
+    # delete node at begin position
+    def DeleteNodeBeginPosition(self):
+        if self.head is None:
+            print("there is no node in this circular linked list")
+            return
+        # if head is the only node present in the linked list
+        if self.head.next is self.head:
+            self.head = None
+            return
+        n = self.head
+        # traversing the linked list until the last node
+        while n.next is not self.head:
+            n = n.next
+        n.next = self.head.next
+        self.head = self.head.next
+        return 
+    
+    # delete node from end
+    def DeleteNodeFromEnd(self):
+        if self.head is None:
+            print("there is no node in this circular linked list")
+            return
+        # if head is the only node present in the linked list
+        if self.head.next is self.head:
+            self.head = None
+            return
+        n = self.head
+        # traversing the linked list until the previous node of the last node
+        while n.next.next is not self.head:
+            n = n.next
+        n.next = self.head
+        return 
+    
+    # delete node by value
+    def DeleteNodeByValue(self, x):
+        if self.head is None:
+            print("there is no node in this circular linked list")
+            return
+        # if head is the only node present in the linked list
+        if self.head.next is self.head:
+            if self.head.data == x:
+                self.head = None
+                return
+            print("node is not present")
+            return 
+        n = self.head
+        prev = None
+        # traversing the linked list until the last node
+        while n:
+            if n.data == x:
+                break
+            prev = n
+            n = n.next
+            if n is self.head:
+                break
+        # after coming out of the loop there are 2 possibilities, 1. came out without finding the x node, 2. came out with finding the x node.
+        # if not find
+        if n.data != x and n == self.head:
+            print(f"{x} node is not present in this linked list")
+            return
+        # if finds
+        prev.next = n.next
+        return
+        
+        
+        
 
 
 
