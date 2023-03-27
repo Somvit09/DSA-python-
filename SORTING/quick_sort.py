@@ -25,3 +25,4 @@ arr = [4,5,6,8,2,3]
 low = 0
 high = len(arr) - 1
 sol.quickSort(arr, low, high)
+print(arr)
