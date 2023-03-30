@@ -92,6 +92,59 @@ class BinarySearchTree:
             self.PreOrderTraversal(root.right)
             print(root.data, end=' ')
 
+    def _find_min(self, node):
+        while node.left:
+            node = node.left
+        return node
+
+    # Deletion
+
+    def Delete(self, data):
+        return self._Delete(self.root, data)
+    
+    def _Delete(self, node, data):
+        # if node is none
+        if node is None:
+            print('there is no node in bst')
+        # if data is lesser than node data then search the node in left subtree
+        if data < node.data:
+            if node.left:
+                # recursive
+                node.left = self._Delete(node.left, data)
+            else:
+                print('node is not present')
+        # if data is greater than node data then search the node in right subtree
+        elif data > node.data:
+            if node.right:
+                node.right = self._Delete(node.right, data)
+            else:
+                print('node is not present')
+        # recursion will not continue for 2 conditions. 1. if the element is not to be found then. 
+        # 2. until the data matches the root data in either left subtree or right subtree
+        else:# if the root data matches the key or data to be deleted
+            # if node has no children
+            if not node.left and not node.right:
+                node = None
+            # if node has left child only
+            elif not node.right:
+                node = node.left
+            # if node has right child only
+            elif not node.left:
+                node = node.left
+            # if node has both childs
+            else:
+                # then we need to find the smallest node in the right subtree
+                successor = self._find_min(node.right)
+                # replace the nodes value with the succesors value
+                node.data = successor.data
+                # recursively delete the successor from the right subtree
+                node.right = self._Delete(node.right, successor.data)
+        # return the updated node
+        return node
+                
+
+
+
         
 bst = BinarySearchTree()
 bst.PrintBST()
@@ -102,8 +155,9 @@ bst.Insert(3)
 bst.Insert(5)
 bst.Insert(6)
 bst.Search(4)
+#bst.InOrderTraversal(bst.root)
+#bst.PreOrderTraversal(bst.root)
+#bst.PostOrderTraversal(bst.root)
+bst.Delete(2)
 bst.PrintBST()
-bst.InOrderTraversal(bst.root)
-bst.PreOrderTraversal(bst.root)
-bst.PostOrderTraversal(bst.root)
     

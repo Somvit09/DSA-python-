@@ -53,3 +53,52 @@ Degenerate BST: A degenerate binary search tree is a tree in which each node has
 
    1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8 -> 9 -> 10
 
+
+
+
+
+# In BST Algorithm when we have a node to delete and that node has both right and left child then what should we do??
+
+let's say we have the following BST:
+         8
+       /   \
+      3     10
+     / \      \
+    1   6      14
+       / \     /
+      4   7   13
+If we want to delete the node with the value 3, which has two children, we would follow these steps:
+
+Find the minimum value in the right subtree of the node we want to delete. In this case, the minimum value in the right subtree of 3 is 4. This becomes the successor node.
+         8
+       /   \
+      3     10
+     / \      \
+    1   6      14
+       / \     /
+      4   7   13
+            ^
+            |
+         Successor
+
+Replace the value of the node we want to delete (3) with the value of the successor node (4).
+         8
+       /   \
+      4     10
+     / \      \
+    1   6      14
+       / \     /
+      4   7   13
+Recursively delete the successor node (4) from the right subtree of the node we want to delete (now 4).
+         8
+       /   \
+      4     10
+     /       \
+    1         14
+             /
+            13
+***why 4 is the successor node
+In a binary search tree, the successor of a node is the node with the smallest key greater than the given node's key.
+
+In the given example, we want to find the successor of node 3. We start by looking at its right subtree, which has nodes with keys 4 and 7. Since the key of node 4 is the smallest key greater than the key of node 3, it is the successor of node 3.***
+
