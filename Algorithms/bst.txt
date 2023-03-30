@@ -1,0 +1,55 @@
+Standard BST: This is the most basic form of binary search tree, where each node satisfies the property that all the nodes in its left subtree have a value less than its own value and all the nodes in its right subtree have a value greater than its own value. Here is an example of a standard binary search tree:
+
+           6
+         /   \
+        4     9
+       / \   / \
+      2   5 8  10
+
+
+Balanced BST: A balanced binary search tree is one where the height of the left and right subtrees of every node differ by at most one. This ensures that search, insertion, and deletion operations take O(log n) time on average. Examples of balanced BSTs include AVL trees and Red-Black trees. Here is an example of an AVL tree, which is a type of balanced binary search tree:
+
+            9
+         /     \
+        4       11
+      /   \     /  \
+     2     6   10  13
+    / \   / \       \
+   1   3 5   7      15
+
+
+Self-balancing BST: A self-balancing binary search tree is a type of balanced binary search tree that automatically adjusts its structure to maintain balance when nodes are added or removed. Examples of self-balancing BSTs include AVL trees, Red-Black trees, Splay trees, and Treaps. Here is an example of a Red-Black tree:
+
+            9
+         /     \
+        4       13
+      /   \     /  \
+     1     6   11  15
+         /   \
+        5     7
+
+
+Complete BST: A complete binary search tree is a tree in which every level, except possibly the last, is completely filled, and all nodes are as far left as possible. Complete binary search trees are used to represent priority queues and heaps. Here is an example of a complete binary search tree:
+
+           10
+         /    \
+        5      15
+       / \    /  \
+      3   8  12  20
+
+
+Full BST: A full binary search tree is a tree in which every node has either zero or two children. Full binary search trees are used in Huffman coding and other compression algorithms. Here is an example of a full binary search tree:
+
+            5
+         /     \
+        2       8
+      /   \    /  \
+     1     4  7    9
+           / 
+          3 
+
+
+Degenerate BST: A degenerate binary search tree is a tree in which each node has only one child, either left or right. A degenerate binary search tree is essentially a linked list and can be created by inserting elements in sorted order. Here is an example of a degenerate binary search tree:
+
+   1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8 -> 9 -> 10
+
