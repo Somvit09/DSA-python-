@@ -141,6 +141,32 @@ class BinarySearchTree:
                 node.right = self._Delete(node.right, successor.data)
         # return the updated node
         return node
+    
+    # count nodes
+    def count_nodes(self, node):
+        if not node:
+            return 0
+        else:
+            return 1 + self.count_nodes(node.left) + self.count_nodes(node.right)
+        
+    # get maximum node
+    def maximum_node(self, node):
+        if not node:
+            return None
+        else:
+            while node.right:
+                node = node.right
+            return node.data
+        
+    # minimum node
+    def minimum_node(self, node):
+        if not node:
+            return None
+        else:
+            while node.left:
+                node = node.left
+            return node.data
+        
                 
 
 
@@ -159,5 +185,8 @@ bst.Search(4)
 #bst.PreOrderTraversal(bst.root)
 #bst.PostOrderTraversal(bst.root)
 bst.Delete(2)
+print(bst.count_nodes(bst.root))
+print(bst.maximum_node(bst.root))
+print(bst.minimum_node(bst.root))
 bst.PrintBST()
     
