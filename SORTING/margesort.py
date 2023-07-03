@@ -13,18 +13,19 @@ def Margesort(arr):
         i = j = k = 0
         # checking and comparing happened between the elements
         while i < len(l) and j < len(r):
-            if l[i] <= r[j]:
+            if l[i] <= r[j]: # checking the element of left array is less than the element of right array or not?
                 arr[k] = l[i]
                 i += 1
             else:
                 arr[k] = r[j]
                 j += 1
             k += 1
-        # if any element has left
+        # if any element has left in the left array
         while i < len(l):
             arr[k] = l[i]
             i += 1
             k += 1
+        # if any element has left the right array
         while j < len(r):
             arr[k] = r[j]
             j += 1

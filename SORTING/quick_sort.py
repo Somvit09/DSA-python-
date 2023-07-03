@@ -5,7 +5,7 @@ class Solution:
         pivot = arr[high]
         pindex = low
         for i in range(low, high):
-            if arr[i] < pivot:
+            if arr[i] < pivot: # checking if the element is greater than pivot
                 arr[i], arr[pindex] = arr[pindex], arr[i]
                 pindex += 1
         arr[high], arr[pindex] = arr[pindex], arr[high]
