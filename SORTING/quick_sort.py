@@ -11,12 +11,13 @@ class Solution:
         arr[high], arr[pindex] = arr[pindex], arr[high]
         return pindex
         
-    #Function to sort a list using quick sort algorithm.
     def quickSort(self,arr,low,high):
-        # code here
+        # the algo runs untill l is less than high
         if low<high:
             p = self.partition(arr, low, high)
+            # recursion occurs in the left sub array
             self.quickSort(arr, low, p-1)
+            # recursion occurs in the right subarray
             self.quickSort(arr, p+1, high)
 
 
