@@ -388,10 +388,333 @@ from random import randint
 # send_emails(emails)
 
 
+# def migratoryBirds(arr):
+#     count = [0] * len(arr)  # Create an array to store the count of each bird type (from 1 to 5)
+#     for bird in arr:
+#         count[bird] += 1  # Count the occurrence of each bird type
+    
+
+#     max_count = max(count)  # Find the maximum count
+#     min_bird = float('inf')  # Initialize the minimum bird type to infinity
+
+#     for bird_type in range(1, 6):
+#         if count[bird_type] == max_count and bird_type < min_bird:
+#             min_bird = bird_type  # Update the minimum bird type if a smaller one is found
+
+#     return min_bird
+
+
+# arr = [1, 4, 4, 4, 5, 3]
+# print(migratoryBirds(arr))
+
+
+# def bonAppetit(bill, k, b):
+#     # Write your code here
+#     not_eaten = bill[k]
+#     eaten_total_amount = 0
+#     for i in  bill:
+#         if i != bill[k]:
+#             eaten_total_amount += i
+#     each_eaten_amount = eaten_total_amount / 2
+#     total_bill_each = sum(bill) / 2
+#     if each_eaten_amount == b:
+#         return "Bon Appetit"
+#     else:
+#         return total_bill_each - each_eaten_amount
+    
+
+# def sockMerchant(n, ar):
+#     # Write your code here
+#     data = {}
+#     for i in ar:
+#         data[i] = ar.count(i)
+#     pair_count = 0
+#     for keys, values in data.items():
+#         if values % 2 != 0:
+#             pair_count += ((values-1) // 2)
+#         else:
+#             pair_count += ((values) // 2)
+
+#     print(pair_count)
+        
+
+# sockMerchant(7, [1,2,1,2,1,3,2])
+
+# def pageCount(n, p):
+#     # Write your code here
+#     page_count = 0
+#     data = {}
+#     i = 1
+#     while i < n+1:
+#         if i == 1:
+#             data[page_count] = [1]
+#             page_count += 1
+#             i += 1
+#         elif i == n:
+#             data[page_count] = [n]
+#             break
+#         else:
+#             data[page_count] = [i, i + 1]
+#             i += 2
+#             page_count += 1
+#     data_reverse_order = {}
+#     for keys, values in data.items():
+#         reversed_key = len(data)-1-keys
+#         data_reverse_order[reversed_key] = values
+#     print(data_reverse_order)
+#     for  keys, values in data.items():
+#         if p in values:
+#             page = keys
+#     for  keys, values in data_reverse_order.items():
+#         if p in values:
+#             page_reversed = keys
+#     return min(page, page_reversed)
+
+# print(pageCount(9, 3))
+
+
+# def pickingNumbers(a):
+#     # Write your code here
+#     temp = []
+#     t = []
+#     i = 0
+#     while i < len(a):
+#         a.sort()
+#         curr = a[i]
+#         if curr + 1 in a:
+#             t.append(curr)
+#             for j in range(len(a)):
+#                 if a[j] == curr and j != i:
+#                     t.append(a[j])
+#             for j in a:
+#                 if j == curr+1:
+#                     t.append(j)
+#         temp.append(t)
+#         t = []
+#         i+=1
+#     max_ = 0
+#     for i in temp:
+#         if max_ < len(i):
+#             max_ = len(i)
+#     return max_
+
+# a = [4, 97, 5, 97, 97, 4, 97, 4, 97, 97, 97, 97, 4, 4, 5, 5, 97, 5, 97, 99, 4, 97, 5, 97, 97, 97, 5, 5, 97, 4, 5, 97, 97, 5, 97, 4, 97, 5, 4, 4, 97, 5, 5, 5, 4, 97, 97, 4, 97, 5, 4, 4, 97, 97, 97, 5, 5, 97, 4, 97, 97, 5, 4, 97, 97, 4, 97, 97, 97, 5, 4, 4, 97, 4, 4, 97, 5, 97, 97, 97, 97, 4, 97, 5, 97, 5, 4, 97, 4, 5, 97, 97, 5, 97, 5, 97, 5, 97, 97, 97]
+# print(len(a))
+# print(pickingNumbers(a))
+
+
+# def climbingLeaderboard(ranked, player):
+#     # Write your code here
+#     i = 0
+#     new_rank = []
+#     while i < len(player):
+#         if player[i] not in ranked:
+#             ranked.append(player[i])
+#         r = sorted(list(set(ranked)))[::-1]
+#         rank = r.index(player[i]) + 1
+#         new_rank.append(rank)
+#         i += 1
+#     return new_rank
+
+
+# def climbingLeaderboard(ranked, player):
+#     # Write your code here
+#     r = sorted(list(set(ranked)))[::-1]
+#     rank_ = {}
+#     rank = []
+#     for i in range(len(r)):
+#         rank_[i+1] = r[i]
+#     i = 0
+#     while i < len(player):
+#         for keys, values in rank_.items():
+#             if player[i] == values:
+#                 rank.append(keys)
+            
+
+
+# ranked = [100, 90, 90, 80, 75, 60]
+# player = [50, 65, 77, 90, 102]
+# print(climbingLeaderboard(ranked, player))
+
+
+# import smtplib, ssl
+
+# port = 465  # For SSL
+# smtp_server = "smtp.gmail.com"
+# sender_email = "makautcell@gmail.com"  # Enter your address
+# receiver_email = "maitysomvit@gmail.com"  # Enter receiver address
+# password = "SOMvit@200032"
+# message = """\
+# Subject: Hi there
+
+# This message is sent from Python."""
+
+# context = ssl.create_default_context()
+# with smtplib.SMTP_SSL(smtp_server, port, context=context) as server:
+#     server.login(sender_email, password)
+#     server.sendmail(sender_email, receiver_email, message)
+
+import string
+
+
+# def get_width(ch, h):
+#     alphabet_list = list(string.ascii_lowercase)
+#     index_ch = alphabet_list.index(ch)
+#     return h[index_ch]
+    
+    
+# def designerPdfViewer(h, word):
+#     # Write your code here
+#     width = 1
+#     for i in word:
+#         ch_width = get_width(i, h)
+#         print(ch_width)
+#         width *= ch_width
+#     return width
+
+
+# a = [1, 3, 1, 3, 1, 4, 1, 3, 2, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5]
+# word = "abc"
+
+# print(designerPdfViewer(a, word))
+
+
+
+# def utopianTree(n):
+#     # Write your code here
+#     et = [0] * (n+1)
+#     print(et)
+#     for i in range(n+1):
+#         if i == 0:
+#             et[i] = 1
+#         if i % 2 == 1: 
+#             et[i] = et[i-1] * 2
+#         if i % 2 == 0:
+#             et[i] = et[i-1] + 1
+#     return et[n]
+
+# print(utopianTree(7))
+
+
+# def angryProfessor(k, a):
+#     # Write your code here
+#     attendee = []
+#     for i in a:
+#         if i <= 0:
+#             attendee.append(i)
+#     if len(attendee) >= k:
+#         return "No"
+#     else:
+#         return "Yes"
+    
+# a = [-1, -3, 4, 2]
+# print(angryProfessor(3, a))
+
+# def beautifulDays(i, j, k):
+#     # Write your code here
+#     days = []
+#     for i in range(i, j+1):
+#         print(int(str(i)[::-1]))
+#         if abs(i-int(str(i)[::-1])) % k == 0:
+#             days.append(i)
+#     return len(days)
 
 
 
 
+# print(beautifulDays(20, 23, 6))
+
+
+# def viralAdvertising(n):
+#     # Write your code here
+#     cm = 2
+#     starting_people = 5
+#     shared = [5]
+#     liked = [2]
+#     for i in range(n-1):
+#         share = (shared[i] // 2) * 3
+#         like = share // 2
+#         shared.append(share)
+#         liked.append(like)
+#         cm += like
+#     return cm
+
+
+# print(viralAdvertising(3))
+
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+#
+# Complete the 'bigSorting' function below.
+#
+# The function is expected to return a STRING_ARRAY.
+# The function accepts STRING_ARRAY unsorted as parameter.
+#
+# def mergesort(unsorted):
+#     if len(unsorted) > 1:
+#         mid  = len(unsorted) // 2
+#         l = unsorted[:mid]
+#         r = unsorted[mid:]
+#         mergesort(l)
+#         mergesort(r)
+#         i = j = k = 0
+#         while i < len(l) and j < len(r):
+#             if l[i] <= r[j]:
+#                 unsorted[k] = l[i]
+#                 i += 1
+#             else:
+#                 unsorted[k] = r[j]
+#                 j += 1
+#             k += 1
+#         while i < len(l):
+#             unsorted[k] = l[i]
+#             k += 1
+#             i += 1
+#         while j < len(r):
+#             unsorted[k] = r[j]
+#             k += 1
+#             j += 1
+# def bigSorting(unsorted):
+#     # Write your code here
+#     mergesort(unsorted)
+#     return unsorted
 
 
 
+
+# a = [6, 31415926535897932384626433832795, 1, 3, 10, 3, 5]
+# result = bigSorting(a)
+# print(result)
+
+# with open('testcase.txt', mode='r') as file:
+#     a = file.read()
+
+# for i in a:
+#     if '\n' in i:
+#         i.removesuffix('\n')
+# print(a)
+
+
+def countingSort(arr):
+    # Write your code here
+    max_ = max(arr)
+    count_array = [0] * (max_+1)
+    for i in range(len(arr)):
+        value = arr[i]
+        count_array[value] += 1
+    sorted_array = []
+    for i in range(len(count_array)):
+        if count_array[i] > 0:
+            sorted_array += ([i] * count_array[i])
+    return sorted_array
+
+
+
+a = [1, 8, 4, 6, 4, 10, 52, 47, 89, 4, 5, 3]
+print(countingSort(a))
