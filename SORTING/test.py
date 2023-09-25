@@ -68,5 +68,3 @@ class Sorting:
 arr = [1, 8, 9, 4, 44, 1, 552, 2]
 obj = Sorting(arr)
 n = len(arr)
-print(obj.BinarySearch(arr, 77))
-print(arr)

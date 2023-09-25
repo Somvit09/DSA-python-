@@ -1,3 +1,4 @@
+from typing import Any
 from bigO import BigO
 from random import randint
 
@@ -701,20 +702,1394 @@ import sys
 # print(a)
 
 
-def countingSort(arr):
-    # Write your code here
-    max_ = max(arr)
-    count_array = [0] * (max_+1)
-    for i in range(len(arr)):
-        value = arr[i]
-        count_array[value] += 1
-    sorted_array = []
-    for i in range(len(count_array)):
-        if count_array[i] > 0:
-            sorted_array += ([i] * count_array[i])
-    return sorted_array
+# def countingSort(arr):
+#     # Write your code here
+#     max_ = max(arr)
+#     count_array = [0] * (max_+1)
+#     for i in range(len(arr)):
+#         value = arr[i]
+#         count_array[value] += 1
+#     sorted_array = []
+#     for i in range(len(count_array)):
+#         if count_array[i] > 0:
+#             sorted_array += ([i] * count_array[i])
+#     return sorted_array
 
 
 
-a = [1, 8, 4, 6, 4, 10, 52, 47, 89, 4, 5, 3]
-print(countingSort(a))
+# a = [1, 8, 4, 6, 4, 10, 52, 47, 89, 4, 5, 3]
+# print(countingSort(a))
+
+
+
+# def longest_common_prefix(arr):
+#     length = len(arr)
+#     if length == 0:
+#         return ""
+#     if length == 1:
+#         return arr[0]
+#     arr.sort()
+#     end_portion = min(len(arr[0]), len(arr[length-1]))
+#     i = 0
+#     while i < end_portion and arr[0][i] == arr[length-1][i]:
+#         i += 1
+#     pre = arr[0][0:i]
+#     return pre
+
+
+
+# arr = [
+#     """flower""", """flow""", """flight"""
+#     ]
+# print(longest_common_prefix(arr))
+
+
+# import numpy as np
+
+
+
+# n = int(input())
+# a = []
+# for i in range(n):
+#     a.append(list(map(float, input().split(" "))))
+# np_array = np.array(a)
+# print(np.linalg.det(np_array))
+
+# n = int(input())
+# a = list(map(int, input().split(" ")))
+# m = int(input())
+# b = list(map(int, input().split(" ")))
+# s = list(set(a))
+
+# s_ = list(set(s.extend(b)))
+# print(s_)
+
+
+# n = int(input())
+# a = set(list(map(int, input().split(" "))))
+# m = int(input())
+
+# for i in range(m):
+#     operation, length = map(int, input().split(" "))
+#     print(operation, length)
+#     set_ = set(list(map(int, input().split(" "))))
+#     if operation == "update":
+#         a.update(set_)
+#     if operation == "intersection_update":
+#         a.intersection_update(set_)
+#     if operation == "difference_update":
+#         a.difference_update(set_)
+#     if operation == "symmetric_difference_update":
+#         a.symmetric_difference_update(set_)
+        
+        
+# print(sum(list(a)))
+
+
+# def closestNumbers(arr):
+#     # Write your code here
+#     arr = list(set(arr))
+#     arr.sort()
+#     if len(arr) == 1:
+#         return 0
+#     if len(arr) > 1:
+#         min_diff = arr[1] - arr[0]
+#         if len(arr) == 2:
+#             return arr
+#     i = 1
+#     while i < len(arr) and i + 1 < len(arr):
+#         if min_diff > (arr[i+1] - arr[i]):
+#             min_diff = (arr[i+1] - arr[i])
+#         i += 1
+#     pair = []
+#     i = 0
+#     while i < len(arr) and i + 1 < len(arr):    
+#         if min_diff == (arr[i+1] - arr[i]):
+#             pair.append(arr[i])
+#             pair.append(arr[i+1])
+#         i += 1
+#     return pair
+
+# arr = [-20, -3916237, -357920, -3620601, 7374819, -7330761, 30, 6246457, -6461594, 266854, -520, -470]
+# print(closestNumbers(arr))
+
+
+# def activityNotifications(expenditure, d):
+#     # Write your code here
+#     i = 0
+#     count = 0
+#     while i < len(expenditure) and i + d < len(expenditure):
+#         arr = expenditure[i:d+i]
+#         com_vr = expenditure[d+i]
+#         print(arr, com_vr)
+#         if len(arr) % 2 == 0:
+#             mid_i = len(arr)//2
+#             median = (arr[mid_i] + arr[mid_i-1]) / 2      
+#         else:
+#             mid_i = len(arr)//2
+#             median = arr[mid_i] 
+#         if com_vr >= (median*2):
+#             count += 1 
+#         i += 1
+#         print("median", median, "count", count)  
+#     return count 
+# arr = [2, 3, 4, 2, 3, 6, 8, 4, 5]
+# d = 5
+# print(activityNotifications(arr, d))
+
+
+
+# class Node:
+#     def __init__(self, data):
+#         self.data = data
+#         self.next = None
+        
+
+# class cirl:
+#     def __init__(self):
+#         self.head = None
+#         self.cl = []
+#     def printcl(self):
+#         if self.head is None:
+#             return 0 
+#         n = self.head
+#         self.cl.append(n.data)
+#         while n.next is not self.head:
+#             self.cl.append(n.next.data)
+#             n = n.next
+
+#     def insert(self, data):
+#         new_node = Node(data)
+#         if self.head is None:
+#             self.head = new_node
+#             new_node.next = self.head
+#         n = self.head
+#         while n.next is not self.head:
+#             n = n.next
+#         n.next = new_node
+#         new_node.next = self.head
+
+#     def insert_f(self, data):
+#         new_node = Node(data)
+#         n = self.head
+#         if n is None:
+#             self.head = new_node
+#             new_node.next = self.head
+#             return
+#         while n.next is not self.head:
+#             n = n.next
+#         n.next = new_node
+#         new_node.next = self.head
+#         self.head = new_node
+
+#     def insert_l(self, data):
+#         new_node = Node(data)
+#         n = self.head
+#         if n is None:
+#             self.head = new_node
+#             new_node.next = self.head
+#             return
+#         while n.next is not self.head:
+#             n = n.next
+#         n.next = new_node
+#         new_node.next = self.head
+
+#     def rotate(self):
+#         n = self.head
+#         while n.next is not self.head:
+#             n = n.next
+#         self.head = n
+#         self.head.next = n.next
+
+        
+# def circularArrayRotation(a, k, queries):
+#     # Write your code here
+#     c = cirl()
+#     for i in a:
+#         c.insert(i)
+#     for i in range(k):
+#         c.rotate()
+#     c.printcl()
+#     for i in queries:
+#         print(c.cl[i])
+        
+
+# a = [1, 2, 3]
+# k = 2
+# q = [0, 1, 2]
+
+# circularArrayRotation(a, k, q)
+
+
+# def permutationEquation(p):
+#     # Write your code here
+#     y = []
+#     max_ = max(p)
+#     for i in range(1, max_+1):
+#         x = i
+#         index = (p.index(x))+1
+#         index_inside = p.index(index)
+#         y.append(index_inside+1)
+#     return y
+
+# p = [5, 2, 1, 3, 4]
+# print(permutationEquation(p))
+
+
+# def findDigits(n):
+#     # Write your code here
+#     temp = 0
+#     for i in str(n):
+#         try:
+#             if n % int(i) == 0:
+#                 temp += 1
+#         except ZeroDivisionError:
+#             continue
+#     return temp
+
+# print(findDigits(110))
+
+
+# def repeatedString(s, n):
+#     # Write your code here
+#     if "a" not in s:
+#         return 0
+#     if len(s) == 1:
+#         if s == "a":
+#             return n
+#     temp_str = ""
+#     for i in s:
+#         if i == "a":
+#             temp_str += i
+#     print(temp_str, len(temp_str), len(s))
+#     if temp_str == s:
+#         return n
+    
+#     d = n // len(s)
+#     excess = abs(len(s)*d - n)
+#     count = len(temp_str) * d
+#     new_string = s[:excess]
+#     count_ = 0
+#     for i in new_string:
+#         if i == "a":
+#             count_ += 1
+#     return count_ + count
+
+# a = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+# n = 534802106762
+# print(repeatedString(a, n))
+
+# class Solution:
+#     def addTwoNumbers(self, l1, l2):
+#         a = "".join(str(i) for i in l1[::-1])
+#         b = "".join(str(i) for i in l2[::-1])
+#         result = int(a) + int(b)
+#         r = list(str(result)[::-1])
+#         return [int(i) for i in r]
+
+
+# a = [2,4,3]
+# b = [5,6,4]
+
+# s = Solution()
+# print(s.addTwoNumbers(a,b))
+# from typing import Optional
+
+# # Definition for singly-linked list.
+# class Node:
+#     def __init__(self, data):
+#         self.data = data
+#         self.next = None
+
+# class ListNode:
+#     def __init__(self):
+#         self.head = None
+#         self.list_ = []
+
+#     def ll_to_list(self, ll):
+#         pass
+
+#     def new_ll(self, l):
+#         self.list_ = l
+#         self.head = Node(self.list_[0])
+#         n = self.head
+#         for i in range(1, len(self.list_)):
+#             n.next = Node(self.list_[i])
+#             n = n.next
+
+#     def printLL(self):
+#         if self.head is None:
+#             return 0
+#         n = self.head
+#         print(n.data, end="-->")
+#         while n.next is not None:
+#             print(n.next.data, end="-->")
+#             n = n.next
+    
+#     def insert(self, data):
+#         new_node = Node(data)
+#         if self.head is None:
+#             self.head = new_node
+#         n = self.head
+#         while n.next is not None:
+#             n = n.next
+#         n.next = new_node
+#         new_node.next = None
+
+#     def insert_f(self, data):
+#         new_node = Node(data)
+#         if self.head is None:
+#             self.head = new_node
+#         new_node.next = self.head
+#         self.head = new_node
+
+# class Solution:
+#     def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
+#         s1 = ListNode()
+#         s2 = ListNode()
+#         s1.new_ll(l1)
+#         s2.new_ll(l2)
+#         a = self.addTwoNumbers_main(s1.list_, s2.list_)
+#         print(a)
+#     def addTwoNumbers_main(self, l1, l2):
+#         a = "".join(str(i) for i in l1[::-1])
+#         b = "".join(str(i) for i in l2[::-1])
+#         result = int(a) + int(b)
+#         r = list(str(result)[::-1])
+#         return [int(i) for i in r]
+        
+
+# d = Solution()
+# l1 = [2,4,3]
+# l2 = [5,6,4]
+# d.addTwoNumbers(l1, l2)
+
+
+# class Solution:
+#     def isPalindrome(self, x: int) -> bool:
+#         s = str(x)
+#         if '-' in s:
+#             return "false"
+#         index = len(s) // 2
+#         if len(s) % 2 == 1:
+#             if s[:index+1] == s[index:][::-1]:
+#                 return "true"
+#             elif s[:index] == s[index:][::-1]:
+#                 return "true"
+#             return "false"
+        
+# z = Solution()
+# print(z.isPalindrome(-121))
+
+
+# class Solution:
+#     def position(self, number):
+#         if number in range(1, 4):
+#             return "I"*number
+#         if number == 4:
+#             return "IV"
+#         if number == 5:
+#             return "V"
+#         if number in range(6, 9):
+#             return "V" + "I"*(number-5)
+#         if number == 9:
+#             return "IX"
+#     def position_under_50(self, number, divider, divisor):
+#         x = "X"*divider
+#         rest = self.position(number-(divisor * divider))
+#         return x+rest
+#     def find_dividor_divisor(self, number, string_):
+#         div = [1, 10, 100, 1000]
+#         divisor = div[len(string_)-1]
+#         divider = number // divisor
+#         return divider, divisor
+#     def romanToInt(self, s: str) -> int:
+#         number = int(s)
+#         if number < 10:
+#             return self.position(number)
+#         if number == 10:
+#             return "X"
+#         if number < 50:
+#             divider, divisor = self.find_dividor_divisor(number, s)
+#             return self.position_under_50(number, divider, divisor)
+#         if number < 90:
+#             rest_number = (number-50)
+#             divider, divisor = self.find_dividor_divisor(rest_number, s)
+#             return "L" + self.position_under_50(rest_number, divider, divisor)
+#         if number == 90:
+#             return "XC"
+#         if number > 90 and number <100:
+#             rest_number = number-90
+#             return "XC" + self.position(rest_number)
+
+#         return f"({divisor} * {divider}) + {number-(divisor * divider)} = {number}"
+        
+
+
+
+# class Solution:
+#     def position_1_10(self, string):
+#         if "I" in string:
+#             if string.count("I") == len(string):
+#                 return len(string)
+#         if "IV" in string:
+#             return 4
+#         if "V" in string and len(string) == 1:
+#             return 5
+#         if string[0] == "V":
+#             if "I" in string:
+#                     return (5 + string.count("I"))
+#         if "IX" in string:
+#             return 9
+#         if "X" in string:
+#             return 10
+
+#     def romanToInt(self, s: str) -> int:
+#         return self.position_1_10(string=s)
+    
+# s = Solution()
+
+# #print(s.romanToInt("VI"))
+
+# def a(b):
+#     def f():
+#         print("dvkfjvbkfn")
+#         b()
+#     return f
+# @a
+# def b():
+#     print("dkvfk")
+
+# def a(b):
+#     for i in range(b):
+#         yield i
+
+# for i in a(5):
+#     print(i)
+
+# a = lambda x: x*2
+# def a(c, b, *args):
+#     v = c + b
+#     for i in args:
+#         v += i
+#     return v
+
+# def a(**kwags):
+#     for i, k in kwags.items():
+#         print(i, k)
+# a(arg1 = "jdkdv", arg2="cdjcvdj", arg3="dfjdjv")
+
+
+# def tellArguments(**kwargs):  
+#     for key, value in kwargs.items():
+#         print(key + ": " + value)
+# tellArguments(arg1 = "argument 1", arg2 = "argument 2", arg3 = "argument 3")
+
+# class a:
+#     def __init__(self, car):
+#         self.__car = car
+
+#     @property
+#     def get_attr(self):
+#         print(self.__car)
+
+#     @get_attr.setter
+#     def get_attr(self, new_car):
+#         self.__car = new_car
+
+# s = a("dkvcnjknv")
+# print(s.get_attr)
+# a.get_attr = "dkvjnjvfnrnvrn"
+# print(s.get_attr)
+
+
+# class a:
+#     def __init__(self, cat):
+#         self.cat = cat
+#     def f(self):
+#         print("djgvknfbvkrnk")
+
+# class b(a):
+#     def __init__(self,cat, dog):
+#         super().__init__(cat)
+#         self.dog =dog
+#     def c(self):
+#         print("dfkdgvkrf")
+
+# x = b("sjcdsjv", "dvjnfjvb")
+# x.f()
+# x.c()
+# print(x.cat, x.dog)
+
+# class a:
+#     def fly(self):
+#         pass
+
+# class bird(a):
+#     def fly(self):
+#         print("birds can fly")
+
+# class dog(a):
+#     def fly(self):
+#         print("dogs cannot fly")
+
+
+# x = [bird(), dog()]
+# for i in x:
+#     i.fly()
+
+
+# def superReducedString(s):
+#     # Write your code here
+#     dict_s = {}
+#     for i in s:
+#         if i in dict_s:
+#             dict_s[i] += 1
+#         else:
+#             dict_s[i] = 1
+#     print(dict_s)
+#     result_str = ''
+#     for keys, values in dict_s.items():
+#         if values % 2 == 1:
+#             result_str += keys
+#     if result_str != "":
+#         return result_str
+#     return "Empty String"
+
+# s = "acdqglrfkqyuqfjkxyqvnrtysfrzrmzlygfveulqfpdbhlqdqrrqdqlhbdpfqluevfgylzmrzrfsytrnvqyxkjfquyqkfrlacdqj"
+# print(superReducedString(s))
+
+
+# def camelcase(s):
+#     # Write your code here
+#     count = 0
+#     for i in s:
+#         if i.isupper():
+#             count += 1
+#     return count
+
+
+# numbers = "0123456789"
+# lower_case = "abcdefghijklmnopqrstuvwxyz"
+# upper_case = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+# special_characters = "!@#$%^&*()-+"
+
+# def minimumNumber(n, password):
+#     has_digit = False
+#     has_upper = False
+#     has_lower = False
+#     has_special = False
+#     has_6_chs = False
+
+#     if n >= 6:
+#         has_6_chs = True
+    
+#     for char in password:
+#         if char.isdigit():
+#             has_digit = True
+#         elif char.isupper():
+#             has_upper = True
+#         elif char.islower():
+#             has_lower = True
+#         else:
+#             has_special = True
+#     count = 0
+#     if has_6_chs:
+#         if not has_digit:
+#             count += 1
+#         if not has_lower:
+#             count += 1
+#         if not has_upper:
+#             count += 1
+#         if not has_special:
+#             count += 1
+#         return count
+#     else:
+#         print("n<6")
+#         if not has_digit:
+#             count += 1
+#         if not has_lower:
+#             count += 1
+#         if not has_upper:
+#             count += 1
+#         if not has_special:
+#             count += 1
+#         if count >= (6-n):
+#             return count
+#         else:
+#             return (6-n)
+        
+
+        
+# s = '4700'
+
+# print(minimumNumber(len(s), s))
+
+# def s(fun):
+#     def d():
+#         print("d function called")
+#         fun()
+#     return d
+
+# @s
+# def fun():
+#     print("fun function called")
+
+# fun()
+
+# def c(n):
+#     for i in range(n):
+#         yield i
+
+# for i in c(10):
+#     print(i)
+
+# a = lambda x:x+2
+
+# print(a(8))
+# from copy import copy
+# a = [1, 8, 7]
+# b = copy(a)
+# print(b)
+# import csv
+# with open('MOCK_DATA.csv', mode='r') as file:
+#     sd = csv.reader(file)
+
+#     for lines in sd:
+#         print(lines)
+
+# def a(*args):
+#     v = 0
+#     for i in args:
+#         v += i
+#     return v
+# print(a(1, 5, 7, 8))
+# def b(**kwargs):
+#     for k, v in kwargs.items():
+#         print(k, ":", v)
+#     return kwargs
+# print(b(arg1="fcjdnv", u44="jfcbejbcvj"))
+
+# class x:
+#     pass
+# class y(x):
+#     pass
+
+# s = x()
+# print("smfksnknk")
+# if __name__ == "__main__":
+#     print(isinstance(s, x))
+
+
+# class a:
+#     def __init__(self, car):
+#         self.__car = car
+#     @property
+#     def get_attr(self):
+#         return self.__car
+    
+#     @get_attr.setter
+#     def get_attr(self, new_car):
+#         self.__car = new_car
+
+# s = a("porchse")
+# print(s.get_attr)
+# s.get_attr = "nano"
+# print(s.get_attr)
+# class a:
+#     def __init__(self, cat):
+#         self.cat = cat
+
+#     def print_c(self):
+#         return self.cat
+
+# class b(a):
+#     def __init__(self,cat, dog):
+#         super().__init__(cat)
+#         self.dog = dog
+
+#     def print_c(self):
+#         return self.cat, self.dog
+    
+# class c(a):
+#     def __init__(self,cat, bird):
+#         super().__init__(cat)
+#         self.bird = bird
+
+#     def print_c(self):
+#         return self.cat, self.bird
+
+
+# for i in (b("cat", "dog"), c("cat", "bird")):
+#     print(i.print_c())
+
+# def mergesort(arr):
+#     if len(arr) > 1:
+#         mid = len(arr) // 2
+#         l = arr[:mid]
+#         r = arr[mid:]
+#         mergesort(l)
+#         mergesort(r)
+#         i = j = k = 0
+#         while i < len(l) and j < len(r):
+#             if l[i] < r[j]:
+#                 arr[k] = l[i]
+#                 i += 1
+#             else:
+#                 arr[k] = r[j]
+#                 j += 1
+#             k += 1
+
+#         while i < len(l):
+#             arr[k] = l[i]
+#             i += 1
+#             k += 1
+#         while j < len(r):
+#             arr[k] = r[j]
+#             j += 1
+#             k += 1
+
+# arr = [1, 85, 4, 6, 1, 2, 20]
+
+
+# def partition(arr, low, high):
+#     pivot = arr[high]
+#     pindex = low
+#     for i in range(low, high):
+#         if arr[i] < pivot:
+#             arr[i], arr[pindex] = arr[pindex], arr[i]
+#             pindex += 1
+#     arr[high], arr[pindex] = arr[pindex], arr[high]
+#     return pindex 
+
+# def quicksort(arr, l, r):
+#     if l<r:
+#         pi = partition(arr, l, r)
+#         partition(arr, l, pi-1)
+#         partition(arr, pi+1, r)
+
+
+# def insertionsor(arr):
+#     for i in range(1, len(arr)):
+#         key = arr[i]
+#         j = i-1
+#         while j>=0 and key < arr[j]:
+#             arr[j+1] = arr[j]
+#             j -= 1
+#         arr[j+1] = key
+
+# def count_sort(arr):
+#     count_array = [0]*(max(arr)+1)
+#     for i in arr:
+#         count_array[i] += 1
+#     temp = []
+#     for i in range(len(count_array)):
+#         if count_array[i] > 0:
+#             temp += [i] * count_array[i]
+#     print(temp)
+
+# def binarysearch(arr, key):
+#     l = 0
+#     r = len(arr) - 1
+    
+#     while l <= r:
+#         mid = (l+r)//2
+#         if arr[mid] == key:
+#             return arr[mid]
+#         if arr[l] < key:
+#             l = mid+1
+#         else:
+#             r = mid - 1
+
+# class stack:
+#     def __init__(self):
+#         self.stack_ = []
+#     def push(self, data):
+#         self.stack_.append(data)
+
+#     def pop_(self):
+#         self.stack_.pop()
+#     def pop_with_value(self, data):
+#         self.stack_.pop(self.stack_.index(data))
+#     def isempty(self):
+#         return len(self.stack_) == 0
+#     def peek(self):
+#         return self.stack_[-1]
+#     def print_s(self):
+#         print(self.stack_[::-1])
+    
+# s = stack()
+# s.push(1)
+# s.push(2)
+# s.push(3)
+# s.push(4)
+# s.print_s()
+# s.pop_()
+# s.print_s()
+# s.pop_with_value(1)
+# s.print_s()
+# print(s.isempty())
+# print(s.peek())
+# s.print_s()
+
+# class node:
+#     def __init__(self, data):
+#         self.data = data
+#         self.left = None
+#         self.right = None
+
+# class bst:
+#     def __init__(self):
+#         self.root = None
+#     def print_bst(self, root):
+#         print(root.data)
+#         if root.left:
+#             self.print_bst(root.left)
+#         if root.right:
+#             self.print_bst(root.right)
+# n = node(1)
+# n.left = node(2)
+# n.right = node(3) 
+# a = bst()
+# a.print_bst(n)
+
+
+# a = 'abc'
+# count_dict = {}
+# for i in a:
+#     if i in count_dict:
+#         count_dict[i] += 1
+#     else:
+#         count_dict[i] = 1
+# print(count_dict)
+
+
+# def sum_3_5(n):
+#     sum_ = 0
+#     for i in range(1, n):
+#         if i % 3 == 0 or i % 5 == 0:
+#             print(i)
+#             sum_ += i
+#             print(sum_)
+#     return sum_
+
+# T = int(input())
+# for i in range(T):
+#     N = int(input())
+#     print(sum_3_5(N))
+    
+
+# import sys
+
+# def check_prime(n):
+#     if n <= 1:
+#         return False
+#     if n % 2 == 0:
+#         return False
+#     if n == 2:
+#         return True
+#     return True
+# t = int(input().strip())
+# for a0 in range(t):
+#     n = int(input().strip())
+#     temp = []
+#     if n % 2 == 0:
+#         for i in range(1, n):
+#             if n % i == 0:
+#                 print(check_prime(i), i)
+#                 if check_prime(i):
+#                     temp.append(i)
+#     else:
+#         for i in range(1, n+1):
+#             if n % i == 0:
+#                 print(check_prime(i), i)
+#                 if check_prime(i):
+#                     temp.append(i)
+#     print(max(temp))
+    
+
+
+
+#!/bin/python3
+
+#!/bin/python3
+
+# import sys
+
+
+# def fibonacci(n):
+#     temp = [1, 2] 
+#     j = 1
+#     while temp[j] <= n:
+#         print(temp[j])
+#         temp.append(temp[j]+temp[j-1])
+#         j += 1
+#     return temp[:-1]
+        
+
+
+# t = int(input().strip())
+# for a0 in range(t):
+#     n = int(input().strip())
+#     temp = fibonacci(n)
+#     sum_ = 0
+#     for i in temp:
+#         if i % 2 == 0:
+#             sum_ += i
+#     print(sum_)
+
+
+
+
+#!/bin/python3
+
+# import sys
+
+# def check_prime(n):
+#     if n <= 1:
+#         return False
+#     if n % 2 == 0:
+#         return False
+#     if n == 2:
+#         return True
+#     for i in range(3, int(math.sqrt(n)) + 1, 2):
+#         if n % i == 0:
+#             return False
+#     return True
+
+# t = int(input().strip())
+# for a0 in range(t):
+#     n = int(input().strip())
+#     count = 1
+#     i = 2
+#     primes = [2]
+#     while count < n:
+#         if check_prime(i):
+#             primes.append(i)
+#             count += 1
+#         i += 1
+#     print(primes[len(primes) - 1], primes)
+        
+    
+    
+# from functools import reduce
+# def problem(n):
+#     temp = []
+#     i, k = 0, 5
+#     last_pointer = i+k
+#     while not last_pointer == (len(str(n))+1):
+#         temp.append(str(n)[i:last_pointer])
+#         last_pointer += 1
+#         i += 1
+#     max_temp = []
+#     number_list = [list(map(int, s)) for s in temp]
+#     multiply = lambda a, b: a*b
+#     products = [reduce(multiply, i) for i in number_list]
+#     return max(products)
+    
+    
+
+# print(problem(3675356291))
+
+# def problem(n):
+#     i = 6
+#     if i > n:
+#         return (-1)
+#     temp = []
+#     for i in range(i, n+1, 3):
+#         temp.append(i)
+    
+#     if n in temp:
+#         m = temp.index(n)+1
+#     else:
+#         return (-1)
+    
+#     if (m**2+(m+1)**2) == (m+2)**2:
+#         return (m*(m+1)*(m+2))
+#     return -1
+
+
+
+# print(problem(4))
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+
+# def find_dividors(n):
+#     dividor = 0
+#     for i in range(1, n+1):
+#         if n % i == 0:
+#             dividor += 1
+#     return dividor
+
+# def trianle_number(k):
+#     temp = []
+#     dividors = []
+#     number = 0
+#     i = 1
+#     while True:
+#         number += i
+#         temp.append(number)
+#         v = find_dividors(number)
+#         dividors.append(v)
+#         if v > k:
+#             return temp[i-1]
+#         i += 1
+
+
+# T = int(input())
+# for i in range(T):
+#     k = int(input())
+#     print(trianle_number(k))
+
+
+# def count_divisors_with_prime_factorization(n):
+#     # Calculate the prime factors and their counts
+#     factors = {}
+#     i = 2
+#     while i * i <= n:
+#         while n % i == 0:
+#             n //= i
+#             factors[i] = factors.get(i, 0) + 1
+#         i += 1
+#     if n > 1:
+#         factors[n] = factors.get(n, 0) + 1
+
+#     # Calculate the number of divisors using prime factorization
+#     divisors = 1
+#     for count in factors.values():
+#         divisors *= count + 1
+
+#     return divisors
+
+# def find_triangle_number_with_divisors(N):
+#     num = 1
+#     triangle_num = 1
+#     while True:
+#         divisors = count_divisors_with_prime_factorization(triangle_num)
+#         if divisors > N:
+#             return triangle_num
+#         num += 1
+#         triangle_num += num
+
+# T = int(input())
+
+# for _ in range(T):
+#     N = int(input())
+#     result = find_triangle_number_with_divisors(N)
+#     print(result)
+
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+
+# def Collatz(n):
+#     temp = [n]
+#     while n != 1:
+#         if n % 2 == 0:
+#             value = int(n/2)
+#         else:
+#             value = (3*n) + 1
+#         temp.append(value)
+#         n = value
+#     print(temp)
+#     return len(temp)-1
+    
+    
+# T = int(input())
+# for i in range(T):
+#     n = int(input())
+#     temp = []
+#     for i in range(1, n+1):
+#         temp.append(Collatz(i))
+#     maximum_c = max(temp)
+#     if temp.count(maximum_c) > 1:
+#         print((temp.index(maximum_c))+1, maximum_c)
+    
+
+
+# def factorial(n):
+#     m = 1
+#     for i in range(1, n+1):
+#         m *= i
+#     return m
+
+# def problem(n):
+#     sum_ = 0
+#     for i in str(n):
+#         sum_ += int(i)
+#     return sum_
+
+
+
+# print(problem(factorial(10)))
+
+
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+
+# def amicable(n):
+#     sum_ = 0
+#     for i in range(1, (n//2)+1):
+#         if n % i == 0:
+#             sum_ += i
+#     return sum_
+
+# def problem(n):
+#     for i in range(n, 1, -1):
+#         if amicable(amicable(i)) == i:
+#             print(amicable(i) , amicable(amicable(i)) )
+#             #return amicable(i) + amicable(amicable(i))  
+
+
+# T = int(input())
+# for _ in range(T):
+#     n = int(input())
+#     print(problem(n))
+
+
+# ch = ['ALEX', 'LUIS', 'JAMES', 'BRIAN', 'PAMELA']
+# ch.sort()
+# print(ch)
+
+# def alphabet_index(alphabet):
+#     # Ensure the input is a single alphabet character and convert it to uppercase
+#     if len(alphabet) == 1 and alphabet.isalpha():
+#         alphabet = alphabet.upper()
+#         # Subtract the ASCII value of 'A' to get the index (0-25)
+#         index = ord(alphabet) - ord('A')
+#         return index+1
+#     else:
+#         return None  # Invalid input
+
+
+def get_Fibonacci_number(n):
+    temp = [1, 1, 2]
+    temp_d = {1: 1}
+    i = len(temp)-1
+    j = i-1
+    while i < 5000 or n < 5000:
+        sum_ = temp[i] + temp[j]
+        temp.append(sum_)
+        if len(str(temp[i])) < len(str(sum_)):
+            temp_d[len(str(sum_))] = sum_
+        if n in temp_d.keys():
+            value = temp_d[n]
+            return temp.index(value)+1
+        i += 1
+        j += 1
+
+
+
+# T = int(input())
+# for _ in range(T):
+#     n = int(input())
+#     print(get_Fibonacci_number(n))
+
+
+
+# def fibo():
+#     a = 0
+#     b = 1
+#     while True:
+#         yield b
+#         a,b = b,a+b
+
+# f = enumerate(fibo())
+# x = 0
+# while len(str(x)) < 1000:
+#     i,x = next(f)
+
+# print("The %d-th term has %d digits"%(i+1,len(str(x))))
+
+    
+
+# from math import log10, floor, ceil
+
+# def euler25(k):
+#     if k < 2:
+#         return 1
+#     ϕ = (1 + 5**0.5) / 2
+#     return ceil((k + log10(5) / 2 - 1) / log10(ϕ))
+
+# T = int(input())
+# for i in range(T):
+#     n = int(input())
+#     try:
+#         result = euler25(n)
+#         print(result)
+#     except Exception as e:
+#         print(f"Runtime error for n = {n}: {e}")
+#     except TimeoutError as t:
+#         print(f"Timeout error for n = {n}: {t}")
+
+
+# class Solution:
+
+#     def check_parenthesis_after(self, p1, p2, s):
+#         if p1 in s:
+#             index = s.index(p1)
+#             if s[index+1] != p2:
+#                 return False
+#         return True
+    
+#     def check_parenthesis_before(self, p1, p2, s):
+#         if p1 in s:
+#             index = s.index(p1)
+#             if s[index-1] != p2:
+#                 return False
+#         return True
+
+#     def isValid(self, s: str) -> bool:
+#         list_s = list(s)
+#         temp = [
+#           self.check_parenthesis_after('(', ')', list_s),
+#           self.check_parenthesis_after('{', '}', list_s),
+#           self.check_parenthesis_after('[', ']', list_s),
+#           self.check_parenthesis_before(']', '[', list_s),
+#           self.check_parenthesis_before('}', '{', list_s),
+#           self.check_parenthesis_before(')', '(', list_s),
+#         ]
+
+#         if False in temp:
+#             return False
+#         return True
+
+              
+        
+
+
+# class Solution:
+#     def removeDuplicates(self, nums) -> int:
+#         i = 0
+#         while i < len(nums):
+#             count = nums.count(nums[i])
+
+#             if count > 1:
+#                 for _ in range(count-1):
+#                     nums.pop(nums.index(nums[i]))
+#             i += 1
+
+#         return len(nums)
+    
+
+
+class Solution:
+    def strStr(self, haystack: str, needle: str):
+        splited = haystack.split(needle)
+        print(splited)
+        if splited:
+            try:
+                substring = haystack.index(needle)
+                print(substring)
+                if substring >= 0:
+                    return substring
+            except ValueError:
+                substring = None
+        return -1
+
+
+
+
+class Solution:
+    def searchInsert(self, nums, target: int) -> int:
+        if target in nums:
+            return nums.index(target)
+        temp = []
+        i = 0
+        while nums[i] < target:
+            temp.append(nums[i])
+            i += 1
+        temp_len = len(temp)
+        temp = None
+        return temp_len
+    
+class Solution:
+    def plusOne(self, digits: [int]) -> [int]:
+        number = ""
+        for i in digits:
+            number += str(i)
+        number = int(number) + 1
+        return list(map(int, str(number)))
+
+digits = [9, 9]
+
+class Solution:
+    def climbStairs(self, n: int) -> int:
+        if n <= 2:
+            return n
+        
+        # Create an array to store the number of ways to reach each step
+        dp = [0] * (n + 1)
+        
+        # There is 1 way to reach the 0th step (base case)
+        dp[0] = 1
+        
+        # There is 1 way to reach the 1st step (base case)
+        dp[1] = 1
+        print(dp)
+        
+        # Calculate the number of ways to reach each step from 2 to n
+        for i in range(2, n + 1):
+            # The number of ways to reach the current step is the sum of the ways
+            # to reach the previous two steps (1 step + 1 step or 2 steps)
+            dp[i] = dp[i - 1] + dp[i - 2]
+            print(dp)
+        
+        # The result is the number of ways to reach the top (the nth step)
+        return dp[n]
+    
+
+class Solution:
+    def mergesort(self, arr):
+        if len(arr) > 1:
+            mid = len(arr) // 2
+            l = arr[:mid]
+            r = arr[mid:]
+            self.mergesort(l)
+            self.mergesort(r)
+            i = j = k = 0
+            while i<len(l) and j<len(r):
+                if l[i] < r[j]:
+                    arr[k] = l[i]
+                    i += 1
+                else:
+                    arr[k] = r[j]
+                    j += 1
+                k += 1
+            while i < len(l):
+                arr[k] = l[i]
+                i += 1
+                k += 1
+            while j < len(r):
+                arr[k] = r[j]
+                j += 1
+                k += 1
+
+    def merge(self, nums1: [int], m: int, nums2: [int], n: int) -> None:
+        """
+        Do not return anything, modify nums1 in-place instead.
+        """
+        i = 0
+        print(nums1[::-1])
+        nums1_reversed = nums1[::-1]
+        while i < len(nums1_reversed):
+            if nums1_reversed[i] == 0:
+                nums1_reversed.pop(i)
+                i -= 1
+            elif nums1_reversed[i] != 0:
+                break
+            i += 1
+        nums1[:] = nums1_reversed[::-1]
+        print(nums1)
+        nums1.extend(nums2)
+        nums1.sort()
+       
+        return nums1    
+
+
+s = Solution()
+nums1 = [-1,0,0,3,3,3,0,0,0]
+m = 3 
+nums2 = [1,2,2]
+n = 3
+print(s.merge(nums1, m, nums2, n))
+
+        
+        
+        
