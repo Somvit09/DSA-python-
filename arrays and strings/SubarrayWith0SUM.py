@@ -19,11 +19,12 @@ class Solution:
     def subArrayExists(self,arr,n):
         ##Your code here
         #Return true or false
-        sum_ = 0// initializing sum as 0
-        s = set() // using set for duplicate values
+        sum_ = 0
+        s = set() 
         for i in arr:
-            sum_ += i // storing variables by adding them
-            if sum_ == 0 or sum_ in s: // if there is a 0 or at a point a duplicate variable arrived in sum_ then retrun True
+            sum_ += i 
+            if sum_ == 0 or sum_ in s:
                 return True
-            s.add(sum_)// else just add it in s set
+            s.add(sum_)
         return False
+    

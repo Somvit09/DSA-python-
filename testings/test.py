@@ -2083,13 +2083,711 @@ class Solution:
         return nums1    
 
 
-s = Solution()
-nums1 = [-1,0,0,3,3,3,0,0,0]
-m = 3 
-nums2 = [1,2,2]
-n = 3
-print(s.merge(nums1, m, nums2, n))
+# s = Solution()
+# nums1 = [-1,0,0,3,3,3,0,0,0]
+# m = 3 
+# nums2 = [1,2,2]
+# n = 3
+# print(s.merge(nums1, m, nums2, n))
 
+
+class Solution:
+    def singleNumber(self, nums: [int]) -> int:
+        result = 0
         
+        for num in nums:
+            result ^= num
+            print(result)
         
+        return result
+import re
+    
+class Solution:
+    def isPalindrome(self, s: str) -> str:
+        if s == " " or "":
+            return True
+        new_str = re.sub(r'[^a-zA-Z0-9]', '', s).lower()
+        print(new_str)
+        length = len(new_str)
+        count = length // 2
+        if length % 2 == 1:
+            if new_str[:count] == new_str[count+1:][::-1]:
+                return True
+        else:
+            if new_str[:count] == new_str[count:][::-1]:
+                return True
+        return False
+
+
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+def find_series(n):
+    sum_ = 0
+    for i in range(1, n+1):
+        sum_ += i**i
+        print(sum_)
+    return str(sum_)
+    
+def find_smallest_n_with_divisors(threshold):
+    count = 0
+    temp = []
+    for i in range(1, 100):
+        for j in range(1, 100):
+            s = ((i*j)//(i+j))
+            if (i*j)%(i+j) == 0:
+                if threshold == s:
+                    if i and j not in temp:
+                        count += 1
+                        temp.append(i)
+                        temp.append(j)
+    
+    return count
+
+def max_team_power_difference(N, powers):
+    # Sort avengers in descending order of their power
+    powers.sort(reverse=True)
+
+    team_1_power = 0
+    team_2_power = 0
+
+    for i in range(N):
+        if i % 2 == 0:
+            team_1_power += powers[i]
+        else:
+            team_2_power += powers[i]
+
+    return abs(team_1_power - team_2_power)
+def solutiom():
+    # Read the sequence
+    sequence = input().strip()
+
+    # Check for duplicate characters in the sequence
+    if len(sequence) != len(set(sequence)):
+        print("New Language Error")
+    else:
+        # Read the string to be converted
+        string_to_convert = input().strip()
         
+        # Create a dictionary to map characters to their positions in the sequence
+        char_mapping = {}
+        for i, char in enumerate(sequence):
+            char_mapping[char] = i
+        
+        # Convert the string based on the sequence
+        converted_string = ""
+        for char in string_to_convert:
+            if char.lower() in char_mapping:
+                converted_string += char if char.islower() else char.lower()
+        
+        print(converted_string)
+
+
+#  problem B
+'''
+'''
+def problem(n:str, m:str) -> str:
+    if len(n) != len(set(n)):
+        return "New Language Error"
+    def alpha_number_separation(n):
+        alphabet1 = ""
+        number1 = ""
+        for i in n:
+            if i.isalpha():
+                alphabet1 += i
+            elif i.isdigit():
+                number1 += i
+        return alphabet1, number1
+    
+    alphabet1, number1 = alpha_number_separation(n)
+    alphabet2, number2 = alpha_number_separation(m)
+
+    alphabet1 = alphabet1.lower()
+    alphabet2 = alphabet2.lower()
+
+    def conversion(alphabetOrNum1, alphabetOrNum2):
+        temp_alOrNumber = []
+        for i in alphabetOrNum2:
+            if i in alphabetOrNum1:
+                temp_alOrNumber.append(alphabetOrNum1.index(i))
+            else:
+                temp_alOrNumber.append(101)
+        alOrNum_str = ""
+        temp_alOrNumber.sort()
+        for i in temp_alOrNumber:
+            if i != 101:
+                alOrNum_str += alphabetOrNum1[i]
+        return alOrNum_str
+
+    alpha_str = conversion(alphabet1, alphabet2)
+    number_str = conversion(number1, number2)
+
+    return alpha_str + " " +  number_str
+
+
+
+
+# if __name__ == "__main__":
+#     s_sequence = input()
+#     c_sequence = input()
+#     result = problem(s_sequence, c_sequence)
+#     print(result)
+    
+    
+# problem C
+
+'''
+'''
+def problemC(number_str:str, action:str):
+    number_list = list(map(int, number_str))
+    i = 0
+    j = 0
+    while i < len(action):
+        if action[i] == 'R':
+            if j + 1 < len(number_list):
+                j += 1
+            else:
+                break
+        if action[i] == 'L':
+            if j == 0:
+                pass
+            j -= 1
+        if action[i] == 'T':
+            number_list[j] += 1
+        if action[i] == 'D':
+            number_list[j] -= 1
+        if action[i] == 'S':
+            # Check if there's a valid index after 'S'
+            if i + 1 < len(action) and action[i + 1].isdigit():
+                swap_index = int(action[i + 1]) - 1
+                if 0 <= swap_index < len(number_list):
+                    number_list[j], number_list[swap_index] = number_list[swap_index], number_list[j]
+                    i += 1  # Skip the digit following 'S'
+                else:
+                    # Handle invalid index
+                    print("Invalid swap index")
+        i += 1
+
+    return ''.join(map(str, number_list))
+
+            
+
+# Definition for singly-linked list.
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+
+class Solution:
+    def deleteDuplicates(self, head: ListNode) -> ListNode:
+        if not head:
+            return head
+
+        current = head
+        temp = []
+        
+        while current:
+            if current.val not in temp:
+                temp.append(current.val)
+            current = current.next
+
+        new_head = ListNode(temp[0])
+        current = new_head
+
+        for val in temp[1:]:
+            current.next = ListNode(val)
+            current = current.next
+
+        return new_head
+
+    
+
+def printLL(head):
+    print(head.val)
+    while head.next:
+        print(head.next.val, end=" ")
+        head = head.next
+
+
+
+input_list = [1,1,2,3,3]
+i = 1
+head = ListNode(1)
+while i < len(input_list):
+    head.next = ListNode(input_list[i])
+    head = head.next
+    i += 1
+
+
+
+# Definition for singly-linked list.
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+class Solution:
+    def mergeTwoLists(self, list1: [ListNode], list2: [ListNode]):
+        temp = []
+        while list1:
+            temp.append(list1.val)
+            list1 = list1.next
+        while list2:
+            temp.append(list2.val)
+            list2 = list2.next
+        temp.sort()
+        head = ListNode(temp[0])
+        current = head
+        for i in range(1, len(temp)):
+            current.next = ListNode(temp[i])
+            current = current.next
+        return head
+        
+list1 = [1, 2, 4]
+list2 = [1, 3, 4]
+
+# Create the head and current variables for list1 and list2
+head1 = ListNode(list1[0])
+current1 = head1
+
+head2 = ListNode(list2[0])
+current2 = head2
+
+# Populate list1 and list2
+for i in range(1, len(list1)):
+    current1.next = ListNode(list1[i])
+    current1 = current1.next
+
+for i in range(1, len(list2)):
+    current2.next = ListNode(list2[i])
+    current2 = current2.next
+
+# s = Solution()
+# head = s.mergeTwoLists(head1, head2)
+# current = head
+# while current:
+#     print(current.val, end = " ")
+#     current = current.next
+
+
+def problem(s:str, a:str)-> str:
+    if a in s:
+        return 'yes'
+    return "no"
+
+input1 = 'abab'
+input2 = 'baaa'
+
+class Solution:
+    def middleNode(self, head: [ListNode]) -> [ListNode]:
+        length = 0
+        current = head
+        while current:
+            current = current.next
+            length += 1
+        i = 0
+        current_even = head
+        while i < (length // 2) + 1:
+            current_even = current_even.next
+            i += 1
+        return current_even
+    
+
+class Solution:
+    def isPalindrome(self, head: [ListNode]) -> bool:
+        ll_str = ''
+        current = head
+        while current:
+            ll_str += str(current.val)
+            current = current.next
+        print(ll_str)
+        palindrome = [1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 22, 33, 44, 55, 66, 77, 88, 99]
+        if len(ll_str) < 3:
+            if int(ll_str) in palindrome:
+                return True
+        mid = len(ll_str) // 2
+        if len(ll_str) % 2 == 0:
+            print(ll_str[:mid], ll_str[mid:])
+            if ll_str[:mid] == ll_str[mid:][::-1]:
+                return True
+        else:
+            print(ll_str[:mid], ll_str[mid+1:])
+            if ll_str[:mid] == ll_str[mid+1:][::-1]:
+                return True
+        return False
+    
+a = [1,2,2,2,1]
+def convert_ll(a:list):
+    head = ListNode(a[0])
+    current = head
+    for i in range(1, len(a)):
+        current.next = ListNode(a[i])
+        current = current.next
+    return head
+
+def print_LL(head):
+    current = head
+    while current:
+        print(current.val, end="-->")
+        current = current.next
+
+class Solution:
+    def reverseList(self, head: [ListNode]) -> [ListNode]:
+        temp = []
+        current = head
+        while current:
+            temp.append(current.val)
+            current = current.next
+        print(temp)
+        temp = temp[::-1]
+        print(temp)
+        head = ListNode(temp[0])
+        current = head
+        for i in range(1, len(temp)):
+            current.next = ListNode(temp[i])
+            current = current.next
+
+        return head
+
+
+class Solution:
+    def sortedMerge(self, a, b, c, n, m):
+        i = 0  # Index for array a
+        j = 0  # Index for array b
+        k = 0  # Index for array c
+
+        while i < n and j < m:
+            if a[i] < b[j]:
+                c[k] = a[i]
+                i += 1
+            else:
+                c[k] = b[j]
+                j += 1
+            k += 1
+
+        # Copy the remaining elements from a and b if any
+        while i < n:
+            c[k] = a[i]
+            i += 1
+            k += 1
+
+        while j < m:
+            c[k] = b[j]
+            j += 1
+            k += 1
+
+        c.sort()
+        return c
+    
+
+s = Solution()
+# print(s.sortedMerge([10, 5, 15], [20, 3, 2], [0,0,0,0,0,0], 3, 3))
+
+
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.right = None
+        self.left = None
+    
+class BST:
+    def __init__(self):
+        self.root = None
+
+    def printBST(self):
+        return self._printBST(self.root)
+    
+    def _printBST(self, root):
+        if root:
+            print(root.data, end='-->')
+            if root.left:
+                self._printBST(root.left)
+            if root.right:
+                self._printBST(root.right)
+            
+    def insertBST(self, data):
+        if self.root is None:
+            self.root = Node(data)
+        elif data == self.root.data:
+            return "Node is already present"
+        else:
+            self._insertBST(self.root, data)
+    def _insertBST(self, node, data):
+            if data > node.data:
+                if  node.right:
+                    self._insertBST(node.right, data)
+                else:
+                    node.right = Node(data)
+            else:
+                if node.left:
+                    self._insertBST(node.left, data)
+                else:
+                    node.left = Node(data)
+    def search(self, key):
+        return self._search(self.root, key)
+    
+    def _search(self, node, key):
+        if node is None:
+            return f"Node is none."
+        if node.data == key:
+            return f"{key} is found"
+        if key < node.data:
+            return self._search(node.left, key)
+        else:
+            return self._search(node.right, key)
+
+
+if __name__ == '__main__':
+    names = ['Harry', 'Berry', 'Tina', 'Akriti', 'Harsh']
+    new_name = []
+    scores = [37.21, 37.21, 37.2, 41, 39]
+    # for _ in range(int(input())):
+    #     name = input()
+    #     score = float(input())
+    #     names.append(name)
+    #     scores.append(score)
+    temp = sorted(list(set(scores)), reverse=False)
+    second = temp[1]
+    second_count = scores.count(second)
+    if second_count > 1:
+        index = 0
+        for i in scores:
+            if i == second:
+                new_name.append(names[index])
+            index += 1
+    elif second_count == 1:
+        new_name.append(names.index(second))
+    new_name.sort()
+
+
+def timeConversion(s):
+    # Write your code here
+    temp = s.split(":")
+    if temp[2][2:] == "AM":
+        if temp[0] ==  "12":
+            temp[0] = "00"
+            temp[2] = temp[2][:2]
+            return ":".join(temp)
+    else:
+        if temp[0] != "12":
+            temp[2] = temp[2][:2]
+            temp[0] = str(int(temp[0]) + 12)
+            return ":".join(temp)
+    return s[:len(s)-2]
+    
+def flippingBits(n):
+    # Write your code here
+    a = str(format(n, '032b'))
+    new_str = ""
+    for i in range(len(a)):
+        if a[i] == "1":
+            new_str += "0"
+        else:
+            new_str += "1"
+    decimal_number = int(new_str, 2)
+    return decimal_number
+
+def countingSort(arr):
+    # Write your code here
+    max_ = 100
+    count_array = [0] * max_
+    for i in range(len(arr)):
+        value = arr[i]
+        count_array[value] += 1
+    print(sorted(a))
+    return count_array
+a =  [63, 54, 17, 78, 43, 70, 32, 97, 16, 94, 74, 18, 60, 61, 35, 83, 13, 56, 75, 52, 
+      70, 12, 24, 37, 17, 0, 16, 64, 34, 81, 82, 24, 69, 2, 30, 61, 83, 37, 97, 
+      16, 70, 53, 0, 61, 12, 17, 97, 67, 33, 30, 49, 70, 11, 40, 67, 94, 84, 60, 
+      35, 58, 19, 81, 16, 14, 68, 46, 42, 81, 75, 87, 13, 84, 33, 34, 14, 96, 7, 59, 17, 
+      98, 79, 47, 71, 75, 8, 27, 73, 66, 64, 12, 29, 35, 80, 78, 80, 6, 5, 24, 49, 82]
+
+import string
+def pangrams(s):
+    # Write your code here
+    s = s.lower()
+    temp = ""
+    alp_str = string.ascii_lowercase
+    for i in s:
+        if i in alp_str and i not in temp:
+            temp += i
+    if len(temp) == len(alp_str):
+        return "pangram"
+    else:
+        return "not pangram"
+
+ch = "We promptly judged antique ivory buckles for the next prize"
+
+
+def birthday(s, d, m):
+    # Write your code here
+    i = 0
+    count = 0
+    if len(s) == 1:
+        if m == 1:
+            if d  == s[0]:
+                return 1
+    while i < len(s) and i+m < len(s):
+        print(s[i:i+m])
+        if sum(s[i:i+m]) == d:
+            count += 1
+        i += m
+    return count
+        
+
+
+s = [2, 3, 4, 4, 2, 1, 2, 5, 3, 4, 4, 3, 4, 1, 3, 5, 4, 5, 3, 1, 1, 5, 4, 3, 5, 3, 5, 
+        3, 4, 4, 2, 4, 5, 2, 3, 2, 5, 3, 4, 2, 4, 3, 3, 4, 3, 5, 2, 5, 1, 3, 1, 4, 2, 2, 4, 
+        3, 3, 3, 3, 4, 1, 1, 4, 3, 1, 5, 2, 5, 1, 3, 5, 4, 3, 3, 1, 5, 3, 3, 3, 4, 5, 2]
+d = 26
+m = 8
+
+# print(birthday(s, d, m))
+
+
+# class A:
+#     def __init__(self, gender):
+#         self.__gender = gender
+#     def _gender(self):
+#         print(self.__gender)
+#     def print_gender(self):
+#         print(self.__gender)
+# try:
+#     s = A('male')
+#     s._gender()
+#     s.print_gender()
+#     print(s.__gender)
+# except AttributeError as e:
+#     print(e)
+# finally:
+#     print("done with the function")
+
+# class B:
+#     def __init__(self_other, car):
+#         self_other.car = car
+#     def print_car(self_other):
+#         print(self_other.car)
+# s = B("Farrery")
+# s.print_car()
+
+# def f():
+#     var = 1
+#     for i in range(1, 11):
+#         var_ = var * i
+#         yield var_
+#     return 
+# for i in f():
+#     print(i)
+
+# import array
+# a = array.array('i', [1, 2, 3])
+# print(a, type(a))
+
+# def s(func):
+#     def d():
+#         print("dnvjndf")
+#         func()
+#         print("bhosda")
+#     return d
+# @s
+# def b():
+#     print("b")
+# b()
+# a = lambda b, c: b*c
+# print(type(range(1, 9)))
+# with open('testcase.txt', mode='r') as file:
+#     print(file.readlines())
+
+    
+# import csv
+# with open('MOCK_DATA.csv', mode='r') as file:
+#     d = csv.reader(file)
+#     for i in d:
+#         print(i)
+# a = " ".join(['996', 'Alli', 'Ebunoluwa', 'aebunoluwarn@google.fr', 'Female', '131.251.27.160'])
+# print(a)  
+# b = a.split(" ")
+# print(b)   
+# def a(*args, **kwargs):
+#     r = {}
+#     var = 0
+#     for i in args:
+#         var += i
+#     for keys, values in kwargs.items():
+#         r[keys] = values
+#     return var, r
+
+# print(a(1, 2, 6, 8 ,7, 6, 7, arg1 = "argument 1", arg2 = "argument 2", arg3 = "argument 3"))
+
+# class p:
+#     def __init__(self):
+#         self.car = "mxjd"
+# class c(p):
+#     def __init__(self):
+#         self.car2 = "sjnvcjdn"
+#         super().__init__()
+# s = c()
+# print(issubclass(c, p))
+# print(s.car)
+
+# class a:
+#     def __init__(self):
+#         self.__car = "djfndj"
+#     def printf(self, s):
+#         print(s)
+#     @property
+#     def getattribute(self):
+#         return self.__car
+#     @getattribute.setter
+#     def getattribute(self, new_car):
+#         self.__car = new_car
+
+# z = a()
+# print(z.getattribute)
+# z.getattribute = "Frrery"
+# print(z.getattribute)
+
+import threading
+def s():
+    print("laure ho tum")
+def b():
+    print("bhosdiwale ho tum")
+t1 = threading.Thread(target=s)
+t2 = threading.Thread(target=b)
+# t1.start()
+# t2.start()
+# t1.join()
+# t2.join()
+
+# x = "sfjdenfgj"
+# assert x == "sfjdenfgj"
+# print(x)
+class Person:
+    '''
+    dsdeghjerngb
+    fedfgjreger
+    defker
+    jhfdshfuduf
+    '''
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def introduce(self):
+        print(f"Hello, my name is {self.name} and I am {self.age} years old.")
+
+    def have_birthday(self):
+        self.age += 1
+        print(f"Happy Birthday! I am now {self.age} years old.")
+
+s = Person("Fuck", 56)
+# print(s.__sizeof__())
+# print("Fuck".swapcase())
+
+
+N = int(input())
+array = list(map(int, input().split(' ')))
+for i in array:
+    average = (sum(array)/len(array))
+print(int(average))
+    
+    
+    
