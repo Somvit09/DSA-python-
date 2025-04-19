@@ -9,7 +9,7 @@ class SingleLinkedList:
 
     # Printing Linked list
     def PrintLinkedList(self):
-        n = self.head
+        n: Node = self.head
         if n is None:
             print([])
         else:
@@ -17,155 +17,128 @@ class SingleLinkedList:
                 print(n.data, end="-->")
                 n = n.next
 
-    # Insertion
+    def insertInEmptyLL(self, data):
+        self.head = Node(data=data)
 
-    # normal insertion when linked list is empty
-    def InsertElementInAEmptyLinkedList(self, data):
-        new_node = Node(data)
-        self.head = new_node
-
-    # inserting an element at the end position
-    def InsertElementAtLast(self, data):
-        new_node = Node(data)
+    def insertElementAtLastLL(self, data):
         if self.head is None:
-            self.head = new_node
+            self.insertInEmptyLL(data=data)
         else:
-            n = self.head
-            # looping through the values untill it reaches to the last element
+            n: Node = self.head
             while n.next is not None:
                 n = n.next
-            n.next = new_node
+            n.next = Node(data=data)
 
-
-    # Inserting element from front of a node
-    def InsertAtBegining(self, data):
-        new_node = Node(data)
-        # checks if the head is none or not.if none head is the new element.
+    def insertAtBeginningLL(self, data):
         if self.head is None:
-            self.head = new_node
+            self.insertInEmptyLL(data=data)
         else:
+            new_node = Node(data=data)
             new_node.next = self.head
             self.head = new_node
 
-    # inserting a node after a given position
-    def InsertElementAfterAPosition(self, data, x):
-        n = self.head
-        # if head is none
-        if n is None:
-            print("Singly linkedlist is empty.")
-            self.InsertElementInAEmptyLinkedList(data)
-            print("added node as a head node as there is no other node.")
-        # if data of head is the value x after which we have to insert the element
-        if n.data == x:
-            self.InsertElementAtLast(data)
-        # if the node is somewhere in the linked list
-        while n is not None:
-            if n.data == x:
-                break
-            n = n.next
-        if n is None:
-            print("Node is not present in single linked list.")
-        else:
-            new_node = Node(data)
-            new_node.next = n.next
-            n.next = new_node
-
-    # inserting a node before a given position
-    def InsertElementBeforeAPosition(self, data, x):
-        n = self.head
-        # if head is none
-        if n is None:
-            print("Singly linkedlist is empty.")
-            self.InsertElementInAEmptyLinkedList(data)
-            print("added node as a head node as there is no other node.")
-        # if data of head is the value x before which we have to insert the element
-        if n.data == x:
-            self.InsertAtBegining(data)
-        # if the node is somewhere in the linked list
-        while n.next is not None:
-            if n.next.data == x:
-                break
-            n = n.next
-        if n.next is None:
-            print("Node is not present in this sigle linked list")
-        else:
-            new_node = Node(data)
-            new_node.next = n.next
-            n.next = new_node
-
-    # Deletion
-
-    # delete node from begin
-    def DeleteBegin(self):
+    def insertElementAfterAtXPosition(self, data, x):
         if self.head is None:
-            print("Linked List is empty")
-        elif self.head.next is None:
-            self.head = None        
+            self.insertInEmptyLL(data=data)
         else:
-            self.head = self.head.next
-
-    
-    def DeleteNodeFromEnd(self):
-        # head is not present
-        if self.head is None:
-            print("Linked List is empty")
-        # head has no next node
-        elif self.head.next is None:
-            self.head = None
-        else:
-            # loop through the last node  to delete it
             n = self.head
-            while n.next.next is not None:
+            while n is not None:
+                if n.data == x:
+                    break
                 n = n.next
-            n.next = None
+            next_ele = n.next
+            curr = n
+            curr.next = Node(data=data)
+            curr.next.next = next_ele
 
-    def DeleteNodeByValue(self, x):
-        # head is not present
+    def insertElementBeforeXPosition(self, data, x):
         if self.head is None:
-            print("linked list is empty")
-            return 
-        # head has next node 
-        if self.head.next is not None:
-            # if x is the data of head node
-            if self.head.data == x:
-                self.head = self.head.next
-                return 
-            # if x is other node present in the linked list
+            self.insertInEmptyLL(data=data)
+        else:
             n = self.head
             while n.next is not None:
                 if n.next.data == x:
                     break
                 n = n.next
-            if n.next is None:
-                print("Node is not present.")
-                return
-            else:
-                n.next = n.next.next
-        # if head has no next node then           
+            prev_ele = n
+            next_ele = n.next
+            prev_ele.next = Node(data=data)
+            prev_ele.next.next = next_ele
+
+    def deleteHead(self):
+        if self.head is None:
+            return []
         else:
-            if self.head.data == x:
-                self.head = None
-            else:
-                print("Node is not present in the linked list.")
+            self.head = self.head.next
+
+    def deleteNodeFromEnd(self):
+        if self.head is None:
+            return []
+        else:
+            n: Node = self.head
+            while n.next.next is not None:
+                n = n.next
+            n.next = None
+
+    def deleteNodeInXPosition(self, x):
+        if self.head is None:
+            return []
+        else:
+            n = self.head
+            while n.next is not None:
+                if n.next.data == x:
+                    break
+                n = n.next
+            n.next = n.next.next
+
+    #Function to rotate a linked list.
+    def rotate(self, k):
+        i = 0
+        while i < k:
+            self.sendHeadToLastNode()
+            i += 1
+
+    def sendHeadToLastNode(self):
+        n = self.head.data
+        self.head = self.head.next
+        node = self.head
+        while node.next is not None:
+            node = node.next
+        node.next = Node(n)
+    #Function to rotate a linked list.
+
+    def createLLUsingAList(self, arr: list):
+        self.insertInEmptyLL(data=arr[0])
+        for i in range(1, len(arr)):
+            self.insertElementAtLastLL(data=arr[i])
 
 
-sol = SingleLinkedList()
-sol.PrintLinkedList()
-sol.InsertElementInAEmptyLinkedList(5)
-sol.InsertElementAtLast(7)
-sol.InsertElementAtLast(8)
-sol.InsertElementAtLast(9)
-sol.InsertAtBegining(4)
-sol.InsertElementAfterAPosition(6, 5)
-sol.InsertElementBeforeAPosition(10, 9)
-sol.DeleteBegin()
-sol.DeleteBegin()
-sol.DeleteNodeFromEnd()
-sol.DeleteNodeByValue(10)
-sol.DeleteNodeByValue(7)
-sol.DeleteNodeByValue(10)
-sol.DeleteNodeByValue(8)
-sol.DeleteNodeByValue(6)
-sol.DeleteNodeByValue(7)
-sol.PrintLinkedList()
 
+n = SingleLinkedList()
+n.insertInEmptyLL(data=1)
+n.insertElementAtLastLL(data=2)
+n.insertElementAtLastLL(data=3)
+n.insertElementAtLastLL(data=4)
+n.insertElementAtLastLL(data=5)
+n.insertAtBeginningLL(data=6)
+n.insertElementAfterAtXPosition(data=7, x=1)
+n.insertElementAfterAtXPosition(data=8, x=7)
+n.insertElementAfterAtXPosition(data=10, x=6)
+n.insertElementBeforeXPosition(data=9, x=10)
+n.deleteHead()
+n.deleteHead()
+n.deleteNodeFromEnd()
+n.deleteNodeInXPosition(x=1)
+n.deleteNodeInXPosition(x=3)
+n.PrintLinkedList()
+print("\n")
+n.rotate(k=3)
+n.PrintLinkedList()
+
+
+### testing
+# arr = [10, 20, 30, 40]
+# n.createLLUsingAList(arr=arr)
+# print("\n")
+# n.rotate(k=6)
+# n.PrintLinkedList()
